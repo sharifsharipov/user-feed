@@ -1,0 +1,66 @@
+CREATE TABLE IF NOT EXISTS UserEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL DEFAULT '',
+    website TEXT NOT NULL DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS PostEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    userId INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES UserEntity(id)
+);
+
+CREATE TABLE IF NOT EXISTS FavoritePostEntity (
+    postId INTEGER NOT NULL PRIMARY KEY,
+    userId INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES UserEntity(id)
+);
+
+getAllUsers:
+SELECT * FROM UserEntity;
+
+insertUser:
+INSERT OR REPLACE INTO UserEntity(id, name, username, email, phone, website)
+VALUES (?, ?, ?, ?, ?, ?);
+
+getUserCount:
+SELECT COUNT(*) FROM UserEntity;
+
+deleteAllUsers:
+DELETE FROM UserEntity;
+
+getPostsByUserId:
+SELECT * FROM PostEntity WHERE userId = ?;
+
+insertPost:
+INSERT OR REPLACE INTO PostEntity(id, userId, title, body)
+VALUES (?, ?, ?, ?);
+
+deletePostsByUserId:
+DELETE FROM PostEntity WHERE userId = ?;
+
+getPostById:
+SELECT * FROM PostEntity WHERE id = ?;
+
+getAllFavorites:
+SELECT * FROM FavoritePostEntity;
+
+insertFavorite:
+INSERT OR REPLACE INTO FavoritePostEntity(postId, userId, title, body)
+VALUES (?, ?, ?, ?);
+
+deleteFavorite:
+DELETE FROM FavoritePostEntity WHERE postId = ?;
+
+isFavorite:
+SELECT COUNT(*) FROM FavoritePostEntity WHERE postId = ?;
+
+getFavoritesByUserId:
+SELECT * FROM FavoritePostEntity WHERE userId = ?;
