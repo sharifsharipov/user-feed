@@ -14,10 +14,10 @@ import com.example.userfeed.domain.repository.PostRepository
 import com.example.userfeed.domain.repository.UserRepository
 import com.example.userfeed.domain.usecase.GetCommentsUseCase
 import com.example.userfeed.domain.usecase.GetFavoritesUseCase
+import com.example.userfeed.domain.usecase.RefreshCommentsUseCase
 import com.example.userfeed.domain.usecase.GetPostByIdUseCase
 import com.example.userfeed.domain.usecase.GetPostsByUserUseCase
 import com.example.userfeed.domain.usecase.GetUsersUseCase
-import com.example.userfeed.domain.usecase.HasUsersUseCase
 import com.example.userfeed.domain.usecase.RefreshPostsUseCase
 import com.example.userfeed.domain.usecase.RefreshUsersUseCase
 import com.example.userfeed.domain.usecase.ToggleFavoriteUseCase
@@ -47,11 +47,11 @@ val repositoryModule = module {
 val useCaseModule = module {
     factoryOf(::GetUsersUseCase)
     factoryOf(::RefreshUsersUseCase)
-    factoryOf(::HasUsersUseCase)
     factoryOf(::GetPostsByUserUseCase)
     factoryOf(::RefreshPostsUseCase)
     factoryOf(::GetPostByIdUseCase)
     factoryOf(::GetCommentsUseCase)
+    factoryOf(::RefreshCommentsUseCase)
     factoryOf(::GetFavoritesUseCase)
     factoryOf(::ToggleFavoriteUseCase)
 }

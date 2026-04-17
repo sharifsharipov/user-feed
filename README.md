@@ -119,13 +119,16 @@ composeApp/src/commonMain/kotlin/com/example/userfeed/
 
 ## Database
 
-SQLDelight bilan 3 ta jadval:
+SQLDelight bilan 4 ta jadval:
 
 | Jadval | Vazifasi |
 |---|---|
 | `UserEntity` | Foydalanuvchilar (id, name, username, email, phone, website) |
 | `PostEntity` | Postlar (id, userId, title, body) |
+| `CommentEntity` | Commentlar (id, postId, name, email, body) |
 | `FavoritePostEntity` | Sevimli postlar (postId, userId, title, body) |
+
+Barcha entity'lar offline rejimda ishlaydi - commentlar ham DB da cache qilinadi.
 
 ## State Management
 
@@ -145,8 +148,97 @@ Error handling `Resource<T>` sealed class orqali:
 sealed class Resource<out T> {
     data class Success<T>(val data: T) : Resource<T>()
     data class Failure(val error: AppError) : Resource<Nothing>()
+
+    fun <R> fold(onSuccess: (T) -> R, onFailure: (AppError) -> R): R
+    fun <R> map(transform: (T) -> R): Resource<R>
+    fun <R> flatMap(transform: (T) -> Resource<R>): Resource<R>
+    fun onSuccess(action: (T) -> Unit): Resource<T>
+    fun onFailure(action: (AppError) -> Unit): Resource<T>
+    fun getOrNull(): T?
 }
 ```
+
+### AppError
+
+```kotlin
+sealed class AppError(open val message: String) {
+    data class NetworkError(...)    // IOException - internet yo'q
+    data class ServerError(         // 4xx/5xx HTTP xatolik
+        override val message: String,
+        val code: Int?              // HTTP status code
+    )
+    data class DatabaseError(...)   // SQLDelight exception
+    data class NotFoundError(...)   // Entity topilmadi
+    data class UnknownError(...)    // Boshqa exception
+}
+```
+
+### Cache Strategy: Stale-While-Revalidate
+
+```
+1. Screen ochiladi
+2. DB dan eski (stale) data Flow orqali darhol ko'rsatiladi
+3. Parallel ravishda API dan yangi data yuklanadi
+4. API success -> DB ga yoziladi -> Flow avtomatik yangi data emit qiladi -> UI yangilanadi
+5. API fail + DB da data bor -> eski data ko'rinadi (UiState.Success saqlanadi)
+6. API fail + DB bo'sh -> UiState.Error ko'rsatiladi
+```
+
+Pull-to-refresh paytida eski data ko'rinishda qoladi, faqat `isRefreshing` indikator ko'rsatiladi.
+Xatolik faqat DB ham bo'sh bo'lganda Error state ga o'tadi.
+
+## Testing
+
+### Test strategiyasi
+
+- **Fake Repository** pattern - mockk o'rniga manual fake (KMP multiplatform compatible)
+- **TestDispatcherProvider** - `Dispatchers.IO` o'rniga `StandardTestDispatcher` inject qilish
+- Domain layer frameworksiz - unit test uchun ideal
+
+### Test tuzilmasi
+
+```
+commonTest/
+├── fake/
+│   ├── FakeData.kt              - Test uchun fake User, Post, Comment
+│   ├── FakeUserRepository.kt    - UserRepository fake implementatsiyasi
+│   ├── FakePostRepository.kt    - PostRepository fake implementatsiyasi
+│   ├── FakeCommentRepository.kt - CommentRepository fake implementatsiyasi
+│   ├── FakeFavoriteRepository.kt - FavoriteRepository fake implementatsiyasi
+│   └── TestDispatcherProvider.kt - DispatcherProvider test implementatsiyasi
+├── core/utils/
+│   └── ResourceTest.kt          - Resource fold/map/flatMap/onSuccess/onFailure
+└── domain/usecase/
+    ├── GetUsersUseCaseTest.kt
+    ├── RefreshUsersUseCaseTest.kt
+    ├── GetPostByIdUseCaseTest.kt
+    ├── GetFavoritesUseCaseTest.kt
+    └── ToggleFavoriteUseCaseTest.kt
+```
+
+### DispatcherProvider - nima uchun kerak?
+
+```kotlin
+// Production
+class DefaultDispatcherProvider : DispatcherProvider {
+    override val io = Dispatchers.IO
+}
+
+// Test - barcha coroutine'lar sinxron ishlaydi
+class TestDispatcherProvider : DispatcherProvider {
+    override val io = StandardTestDispatcher()
+}
+```
+
+Bu pattern repository'larni test qilishda `withContext(dispatcher.io)` ni sinxron qiladi.
+
+### Test run qilish
+
+```bash
+./gradlew :composeApp:allTests
+```
+
+24 ta test (Android + iOS) - barcha UseCase va Resource testlari.
 
 ## Ishga tushirish
 
@@ -164,12 +256,9 @@ sealed class Resource<out T> {
 Xcode orqali `iosApp/iosApp.xcodeproj` ochib run qiling.
 
 ### Eslatma
-`gradle.properties` da JDK 17 path ko'rsatilgan. Agar boshqa path bo'lsa o'zgartiring:
-```properties
-org.gradle.java.home=/path/to/jdk17
+JDK 17 kerak. `JAVA_HOME` environment variable o'rnatilgan bo'lishi shart:
+```bash
+export JAVA_HOME=/path/to/jdk17
 ```
 
-## Dark Mode
-
-`UserFeedTheme` `isSystemInDarkTheme()` orqali avtomatik dark/light mode ni qo'llab-quvvatlaydi.
 # user-feed

@@ -1,0 +1,600 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 15">
+<meta name="Originator" content="Microsoft Word 15">
+<style>
+    @page { size: A4; margin: 2cm 2.5cm 2cm 2.5cm; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #1a1a1a; }
+    h1 { font-size: 24pt; color: #1565C0; border-bottom: 3px solid #1565C0; padding-bottom: 8px; margin-top: 30px; }
+    h2 { font-size: 16pt; color: #1976D2; border-bottom: 1px solid #BBDEFB; padding-bottom: 4px; margin-top: 24px; }
+    h3 { font-size: 13pt; color: #1E88E5; margin-top: 18px; }
+    h4 { font-size: 11pt; color: #333; margin-top: 14px; font-weight: bold; }
+    table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+    th { background-color: #1976D2; color: white; padding: 8px 12px; text-align: left; font-size: 10pt; }
+    td { border: 1px solid #ddd; padding: 6px 12px; font-size: 10pt; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+    code { background-color: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', 'Courier New', monospace; font-size: 10pt; color: #d32f2f; }
+    pre { background-color: #263238; color: #ECEFF1; padding: 14px; border-radius: 6px; font-family: 'Consolas', 'Courier New', monospace; font-size: 9.5pt; line-height: 1.5; overflow-x: auto; white-space: pre-wrap; }
+    .keyword { color: #C792EA; }
+    .type { color: #FFCB6B; }
+    .string { color: #C3E88D; }
+    .comment { color: #546E7A; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 9pt; font-weight: bold; margin: 2px; }
+    .badge-blue { background-color: #E3F2FD; color: #1565C0; }
+    .badge-green { background-color: #E8F5E9; color: #2E7D32; }
+    .badge-orange { background-color: #FFF3E0; color: #E65100; }
+    .badge-purple { background-color: #F3E5F5; color: #6A1B9A; }
+    .box { border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; margin: 12px 0; background-color: #fafafa; }
+    .box-blue { border-left: 4px solid #1976D2; background-color: #E3F2FD; }
+    .box-green { border-left: 4px solid #4CAF50; background-color: #E8F5E9; }
+    .box-red { border-left: 4px solid #F44336; background-color: #FFEBEE; }
+    .flow-arrow { font-size: 16pt; color: #1976D2; font-weight: bold; }
+    .score { font-size: 14pt; font-weight: bold; }
+    .score-green { color: #2E7D32; }
+    ul { margin: 6px 0; }
+    li { margin: 4px 0; }
+    .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- TITLE PAGE -->
+<div style="text-align: center; padding-top: 120px;">
+    <h1 style="font-size: 36pt; border: none; color: #1565C0;">UserFeed</h1>
+    <p style="font-size: 16pt; color: #666;">Kotlin Multiplatform Mobile Application</p>
+    <p style="font-size: 13pt; color: #999; margin-top: 40px;">Senior Level Technical Documentation</p>
+    <br><br>
+    <table style="width: 60%; margin: 40px auto; border: none;">
+        <tr style="background: none;"><td style="border: none; text-align: right; color: #888; width: 40%;">Platform:</td><td style="border: none; font-weight: bold;">Android + iOS</td></tr>
+        <tr style="background: none;"><td style="border: none; text-align: right; color: #888;">Architecture:</td><td style="border: none; font-weight: bold;">Clean Architecture + MVVM</td></tr>
+        <tr style="background: none;"><td style="border: none; text-align: right; color: #888;">Language:</td><td style="border: none; font-weight: bold;">Kotlin 2.3.20</td></tr>
+        <tr style="background: none;"><td style="border: none; text-align: right; color: #888;">UI:</td><td style="border: none; font-weight: bold;">Jetpack Compose Multiplatform 1.10.3</td></tr>
+        <tr style="background: none;"><td style="border: none; text-align: right; color: #888;">Date:</td><td style="border: none; font-weight: bold;">April 2026</td></tr>
+    </table>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="page-break"></div>
+<h1>Mundarija</h1>
+<ol style="font-size: 12pt; line-height: 2;">
+    <li><a href="#tech">Texnologiyalar va kutubxonalar</a></li>
+    <li><a href="#arch">Arxitektura</a></li>
+    <li><a href="#solid">SOLID printsiplari</a></li>
+    <li><a href="#dry">DRY / KISS printsiplari</a></li>
+    <li><a href="#structure">Loyiha tuzilmasi</a></li>
+    <li><a href="#layers">Qatlamlar tafsiloti</a></li>
+    <li><a href="#screens">Screenlar</a></li>
+    <li><a href="#db">Database</a></li>
+    <li><a href="#state">State Management</a></li>
+    <li><a href="#error">Error Handling</a></li>
+    <li><a href="#di">Dependency Injection</a></li>
+    <li><a href="#kmp">KMP Platform-Specific kod</a></li>
+    <li><a href="#offline">Offline Support</a></li>
+    <li><a href="#theme">Theming va Dark Mode</a></li>
+    <li><a href="#run">Ishga tushirish</a></li>
+</ol>
+
+<!-- 1. TECHNOLOGIES -->
+<div class="page-break"></div>
+<h1 id="tech">1. Texnologiyalar va kutubxonalar</h1>
+
+<table>
+    <tr><th>Texnologiya</th><th>Versiya</th><th>Vazifasi</th><th>Qatlam</th></tr>
+    <tr><td>Kotlin Multiplatform</td><td>2.3.20</td><td>Android + iOS shared code</td><td><span class="badge badge-purple">Core</span></td></tr>
+    <tr><td>Compose Multiplatform</td><td>1.10.3</td><td>Deklarativ UI framework</td><td><span class="badge badge-blue">Presentation</span></td></tr>
+    <tr><td>Ktor Client</td><td>3.1.3</td><td>HTTP so'rovlar (OkHttp / Darwin)</td><td><span class="badge badge-orange">Data</span></td></tr>
+    <tr><td>SQLDelight</td><td>2.0.2</td><td>Type-safe SQL database</td><td><span class="badge badge-orange">Data</span></td></tr>
+    <tr><td>Koin</td><td>4.0.4</td><td>Dependency Injection</td><td><span class="badge badge-purple">Core</span></td></tr>
+    <tr><td>Voyager</td><td>1.1.0-beta03</td><td>Navigation + ScreenModel</td><td><span class="badge badge-blue">Presentation</span></td></tr>
+    <tr><td>Kotlinx Coroutines</td><td>1.10.2</td><td>Asinxron ishlash, Flow</td><td><span class="badge badge-purple">Core</span></td></tr>
+    <tr><td>Kotlinx Serialization</td><td>1.8.1</td><td>JSON parse/serialize</td><td><span class="badge badge-orange">Data</span></td></tr>
+</table>
+
+<h3>API</h3>
+<div class="box box-blue">
+    <strong>Base URL:</strong> <code>https://jsonplaceholder.typicode.com</code>
+</div>
+
+<table>
+    <tr><th>Endpoint</th><th>Method</th><th>Tavsif</th><th>Response</th></tr>
+    <tr><td><code>/users</code></td><td>GET</td><td>Barcha foydalanuvchilar</td><td><code>List&lt;UserDto&gt;</code></td></tr>
+    <tr><td><code>/posts?userId={id}</code></td><td>GET</td><td>Foydalanuvchi postlari</td><td><code>List&lt;PostDto&gt;</code></td></tr>
+    <tr><td><code>/comments?postId={id}</code></td><td>GET</td><td>Post kommentlari</td><td><code>List&lt;CommentDto&gt;</code></td></tr>
+</table>
+
+<!-- 2. ARCHITECTURE -->
+<div class="page-break"></div>
+<h1 id="arch">2. Arxitektura</h1>
+
+<h3>Clean Architecture + MVVM</h3>
+<p>Loyiha 3 ta mustaqil qatlamdan iborat. Har bir qatlam faqat o'zidan pastdagi qatlamga bog'liq.</p>
+
+<div style="text-align: center; margin: 20px 0;">
+    <table style="width: 80%; margin: 0 auto;">
+        <tr>
+            <td style="background: #E3F2FD; text-align: center; padding: 16px; border: 2px solid #1976D2; border-radius: 8px;">
+                <strong style="font-size: 13pt;">PRESENTATION</strong><br>
+                <span style="font-size: 9pt;">Screen, ScreenModel, Components, Theme</span>
+            </td>
+        </tr>
+        <tr><td style="border: none; text-align: center; font-size: 20pt; color: #1976D2;">&#8595;</td></tr>
+        <tr>
+            <td style="background: #E8F5E9; text-align: center; padding: 16px; border: 2px solid #4CAF50; border-radius: 8px;">
+                <strong style="font-size: 13pt;">DOMAIN</strong><br>
+                <span style="font-size: 9pt;">UseCase, Model, Repository Interface</span>
+            </td>
+        </tr>
+        <tr><td style="border: none; text-align: center; font-size: 20pt; color: #4CAF50;">&#8593;</td></tr>
+        <tr>
+            <td style="background: #FFF3E0; text-align: center; padding: 16px; border: 2px solid #FF9800; border-radius: 8px;">
+                <strong style="font-size: 13pt;">DATA</strong><br>
+                <span style="font-size: 9pt;">ApiService, DTO, Repository Impl, Mapper, SQLDelight</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="box box-green">
+    <strong>Dependency Rule:</strong> <code>presentation &rarr; domain &larr; data</code><br>
+    Domain layer hech qanday tashqi frameworkga (Ktor, SQLDelight, Compose) bog'liq emas.
+</div>
+
+<h3>Data Flow</h3>
+<pre>
+UI (Screen)
+  &darr; event (click, refresh)
+ScreenModel
+  &darr; invoke()
+UseCase
+  &darr; method call
+Repository Interface (domain)
+  &darr; implemented by
+Repository Impl (data)
+  &darr; API call / DB query
+ApiService / SQLDelight
+  &darr; response
+Repository Impl &rarr; Resource&lt;T&gt;
+  &darr; fold / onFailure
+ScreenModel &rarr; UiState&lt;T&gt;
+  &darr; StateFlow.collectAsState()
+UI (Screen) &rarr; recompose
+</pre>
+
+<!-- 3. SOLID -->
+<div class="page-break"></div>
+<h1 id="solid">3. SOLID Printsiplari</h1>
+
+<h2>S - Single Responsibility Principle</h2>
+<p>Har bir class faqat 1 ta sababga ko'ra o'zgaradi.</p>
+
+<h4>UseCase'lar - har biri 1 vazifa:</h4>
+<table>
+    <tr><th>UseCase</th><th>Vazifasi</th><th>Return type</th></tr>
+    <tr><td><code>GetUsersUseCase</code></td><td>DB dan userlar Flow'ini olish</td><td><code>Flow&lt;List&lt;User&gt;&gt;</code></td></tr>
+    <tr><td><code>RefreshUsersUseCase</code></td><td>API dan userlarni yuklash va DB ga saqlash</td><td><code>Resource&lt;Unit&gt;</code></td></tr>
+    <tr><td><code>HasUsersUseCase</code></td><td>DB da user bor-yo'qligini tekshirish</td><td><code>Resource&lt;Boolean&gt;</code></td></tr>
+    <tr><td><code>GetPostsByUserUseCase</code></td><td>User postlarini DB dan Flow olish</td><td><code>Flow&lt;List&lt;Post&gt;&gt;</code></td></tr>
+    <tr><td><code>RefreshPostsUseCase</code></td><td>API dan postlarni yuklash</td><td><code>Resource&lt;Unit&gt;</code></td></tr>
+    <tr><td><code>GetPostByIdUseCase</code></td><td>Bitta postni DB dan olish</td><td><code>Resource&lt;Post&gt;</code></td></tr>
+    <tr><td><code>GetCommentsUseCase</code></td><td>API dan commentlar olish</td><td><code>Resource&lt;List&lt;Comment&gt;&gt;</code></td></tr>
+    <tr><td><code>GetFavoritesUseCase</code></td><td>Favorite postlar Flow'ini olish</td><td><code>Flow&lt;List&lt;Post&gt;&gt;</code></td></tr>
+    <tr><td><code>ToggleFavoriteUseCase</code></td><td>Favorite qo'shish/o'chirish</td><td><code>Resource&lt;Unit&gt;</code></td></tr>
+</table>
+
+<h4>Repository'lar - har biri 1 entity:</h4>
+<table>
+    <tr><th>Repository</th><th>Entity</th></tr>
+    <tr><td><code>UserRepository</code></td><td>User</td></tr>
+    <tr><td><code>PostRepository</code></td><td>Post</td></tr>
+    <tr><td><code>CommentRepository</code></td><td>Comment</td></tr>
+    <tr><td><code>FavoriteRepository</code></td><td>FavoritePost</td></tr>
+</table>
+
+<h2>O - Open/Closed Principle</h2>
+<p>Kengaytirish uchun ochiq, o'zgartirish uchun yopiq.</p>
+
+<h4><code>Resource&lt;T&gt;</code> - functional API bilan kengaytirilgan:</h4>
+<pre>
+<span class="keyword">sealed class</span> <span class="type">Resource</span>&lt;<span class="keyword">out</span> T&gt; {
+    <span class="keyword">data class</span> <span class="type">Success</span>&lt;T&gt;(<span class="keyword">val</span> data: T)
+    <span class="keyword">data class</span> <span class="type">Failure</span>(<span class="keyword">val</span> error: <span class="type">AppError</span>)
+
+    <span class="keyword">fun</span> &lt;R&gt; <span class="type">fold</span>(onSuccess, onFailure): R
+    <span class="keyword">fun</span> &lt;R&gt; <span class="type">map</span>(transform): Resource&lt;R&gt;
+    <span class="keyword">fun</span> &lt;R&gt; <span class="type">flatMap</span>(transform): Resource&lt;R&gt;
+    <span class="keyword">fun</span> <span class="type">onSuccess</span>(action): Resource&lt;T&gt;
+    <span class="keyword">fun</span> <span class="type">onFailure</span>(action): Resource&lt;T&gt;
+    <span class="keyword">fun</span> <span class="type">getOrNull</span>(): T?
+}
+</pre>
+
+<h4><code>AppError</code> - yangi error turi qo'shish faqat subclass:</h4>
+<pre>
+<span class="keyword">sealed class</span> <span class="type">AppError</span>(<span class="keyword">open val</span> message: String) {
+    <span class="keyword">data class</span> <span class="type">NetworkError</span>(...)
+    <span class="keyword">data class</span> <span class="type">ServerError</span>(..., <span class="keyword">val</span> code: Int?)
+    <span class="keyword">data class</span> <span class="type">DatabaseError</span>(...)
+    <span class="keyword">data class</span> <span class="type">NotFoundError</span>(...)
+    <span class="keyword">data class</span> <span class="type">UnknownError</span>(...)
+}
+</pre>
+
+<h2>L - Liskov Substitution Principle</h2>
+<p>Barcha Repository implementation'lari interface'ni to'liq qanoatlantiradi. <code>UserRepositoryImpl</code> ni <code>UserRepository</code> interface orqali ishlatish mumkin - behavior o'zgarmaydi.</p>
+
+<h2>I - Interface Segregation Principle</h2>
+<p>Client faqat o'ziga kerakli method'larni ko'radi:</p>
+<ul>
+    <li><code>PostRepository</code> - faqat Post operatsiyalari (3 method)</li>
+    <li><code>CommentRepository</code> - faqat Comment operatsiyalari (1 method)</li>
+    <li>Oldin Comment PostRepository ichida edi - buzilgan ISP</li>
+</ul>
+
+<h2>D - Dependency Inversion Principle</h2>
+<div class="box">
+    <strong>Domain layer:</strong> <code>interface UserRepository</code> (abstract)<br>
+    <strong>Data layer:</strong> <code>class UserRepositoryImpl : UserRepository</code> (concrete)<br>
+    <strong>DI:</strong> <code>singleOf(::UserRepositoryImpl) bind UserRepository::class</code><br><br>
+    ScreenModel &rarr; UseCase &rarr; Repository <strong>interface</strong> (Domain da). Implementation'ni bilmaydi.
+</div>
+
+<!-- 4. DRY / KISS -->
+<div class="page-break"></div>
+<h1 id="dry">4. DRY / KISS Printsiplari</h1>
+
+<h2>DRY - Don't Repeat Yourself</h2>
+
+<table>
+    <tr><th>Muammo</th><th>Yechim</th><th>Fayl</th></tr>
+    <tr><td>Repository'larda takroriy try-catch</td><td><code>safeApiCall</code> / <code>safeDbCall</code></td><td>SafeCall.kt</td></tr>
+    <tr><td>Har bir screen da Scaffold+Box+when</td><td><code>UiStateScaffold</code> widget</td><td>UiStateScaffold.kt</td></tr>
+    <tr><td>PostItem va FavoriteItem bir xil</td><td><code>PostCard</code> widget (<code>showBody</code> param)</td><td>PostCard.kt</td></tr>
+    <tr><td>TopAppBar konfiguratsiya takrori</td><td><code>AppTopBar</code> widget</td><td>AppTopBar.kt</td></tr>
+    <tr><td><code>MaterialTheme.typography.xxx</code> uzun</td><td><code>AppTextStyle.xxx</code> / <code>AppColor.xxx</code></td><td>Type.kt</td></tr>
+</table>
+
+<h4><code>safeApiCall</code> - yagona error handling:</h4>
+<pre>
+<span class="keyword">suspend fun</span> &lt;T&gt; <span class="type">safeApiCall</span>(
+    dispatcher: <span class="type">CoroutineDispatcher</span>,
+    block: <span class="keyword">suspend</span> () -> T
+): <span class="type">Resource</span>&lt;T&gt; = withContext(dispatcher) {
+    <span class="keyword">try</span> {
+        Resource.Success(block())
+    } <span class="keyword">catch</span> (e: IOException) {
+        Resource.Failure(AppError.NetworkError())
+    } <span class="keyword">catch</span> (e: ServerResponseException) {
+        Resource.Failure(AppError.ServerError(code = e.response.status.value))
+    } <span class="keyword">catch</span> (e: Exception) {
+        Resource.Failure(AppError.UnknownError(e.message))
+    }
+}
+</pre>
+
+<h4><code>UiStateScaffold</code> - screen boilerplate yo'q:</h4>
+<pre>
+<span class="comment">// Oldin (har bir screen da ~20 qator)</span>
+Scaffold(topBar = { ... }) { padding ->
+    Box(Modifier.fillMaxSize().padding(padding)) {
+        <span class="keyword">when</span> (state) {
+            is UiState.Loading -> LoadingContent()
+            is UiState.Error -> ErrorContent(...)
+            is UiState.Success -> { ... }
+        }
+    }
+}
+
+<span class="comment">// Keyin (1 chaqiruv)</span>
+UiStateScaffold(
+    state = state,
+    topBar = { AppTopBar(...) },
+    onRetry = screenModel::refresh
+) { data -> <span class="comment">/* faqat success content */</span> }
+</pre>
+
+<h2>KISS - Keep It Simple, Stupid</h2>
+<ul>
+    <li><code>UiState</code> - faqat 3 holat: Loading, Success, Error</li>
+    <li><code>ApiService</code> - har bir endpoint 1 qator</li>
+    <li>Domain model'lar - faqat kerakli field'lar, ortiqchasi yo'q</li>
+    <li>Har bir UseCase - 1 ta <code>operator fun invoke()</code></li>
+</ul>
+
+<!-- 5. PROJECT STRUCTURE -->
+<div class="page-break"></div>
+<h1 id="structure">5. Loyiha tuzilmasi</h1>
+
+<pre>
+composeApp/src/
+├── <span class="type">commonMain</span>/kotlin/com/example/userfeed/
+│   ├── App.kt
+│   ├── <span class="keyword">core/</span>
+│   │   ├── constants/ApiConstants.kt
+│   │   ├── database/DatabaseDriverFactory.kt    <span class="comment">(expect)</span>
+│   │   ├── di/AppModule.kt
+│   │   ├── di/PlatformModule.kt                 <span class="comment">(expect)</span>
+│   │   ├── network/HttpClientFactory.kt
+│   │   └── utils/
+│   │       ├── DispatcherProvider.kt
+│   │       ├── Resource.kt
+│   │       ├── SafeCall.kt
+│   │       └── UiState.kt
+│   ├── <span class="keyword">data/</span>
+│   │   ├── mapper/Mappers.kt
+│   │   ├── remote/
+│   │   │   ├── ApiService.kt
+│   │   │   └── dto/ (UserDto, PostDto, CommentDto)
+│   │   └── repository/
+│   │       ├── UserRepositoryImpl.kt
+│   │       ├── PostRepositoryImpl.kt
+│   │       ├── CommentRepositoryImpl.kt
+│   │       └── FavoriteRepositoryImpl.kt
+│   ├── <span class="keyword">domain/</span>
+│   │   ├── model/ (User, Post, Comment)
+│   │   ├── repository/ (4 interface)
+│   │   └── usecase/ (9 UseCase)
+│   └── <span class="keyword">presentation/</span>
+│       ├── components/ (5 reusable widget)
+│       ├── screens/ (5 screen + 5 screenmodel)
+│       └── theme/ (Color, Type, Theme)
+├── <span class="type">androidMain</span>/
+│   ├── DatabaseDriverFactory.android.kt         <span class="comment">(actual - AndroidSqliteDriver)</span>
+│   ├── PlatformModule.android.kt                <span class="comment">(actual - androidContext)</span>
+│   ├── MainActivity.kt
+│   └── UserFeedApplication.kt                   <span class="comment">(Koin startKoin)</span>
+└── <span class="type">iosMain</span>/
+    ├── DatabaseDriverFactory.ios.kt             <span class="comment">(actual - NativeSqliteDriver)</span>
+    ├── PlatformModule.ios.kt                    <span class="comment">(actual)</span>
+    └── MainViewController.kt                   <span class="comment">(Koin startKoin)</span>
+</pre>
+
+<!-- 6. LAYERS DETAIL -->
+<div class="page-break"></div>
+<h1 id="layers">6. Qatlamlar tafsiloti</h1>
+
+<h2>Domain Layer</h2>
+<p>Eng ichki qatlam. Hech qanday tashqi kutubxonaga bog'liq emas (faqat Kotlin stdlib va Coroutines).</p>
+
+<h4>Model'lar:</h4>
+<pre>
+<span class="keyword">data class</span> <span class="type">User</span>(<span class="keyword">val</span> id: Long, <span class="keyword">val</span> name: String, <span class="keyword">val</span> username: String,
+               <span class="keyword">val</span> email: String, <span class="keyword">val</span> phone: String, <span class="keyword">val</span> website: String)
+
+<span class="keyword">data class</span> <span class="type">Post</span>(<span class="keyword">val</span> id: Long, <span class="keyword">val</span> userId: Long, <span class="keyword">val</span> title: String,
+               <span class="keyword">val</span> body: String, <span class="keyword">val</span> isFavorite: Boolean = <span class="keyword">false</span>)
+
+<span class="keyword">data class</span> <span class="type">Comment</span>(<span class="keyword">val</span> id: Long, <span class="keyword">val</span> postId: Long, <span class="keyword">val</span> name: String,
+                  <span class="keyword">val</span> email: String, <span class="keyword">val</span> body: String)
+</pre>
+
+<h4>Repository interface'lar:</h4>
+<pre>
+<span class="keyword">interface</span> <span class="type">UserRepository</span> {
+    <span class="keyword">fun</span> getUsers(): Flow&lt;List&lt;User&gt;&gt;
+    <span class="keyword">suspend fun</span> refreshUsers(): Resource&lt;Unit&gt;
+    <span class="keyword">suspend fun</span> hasUsers(): Resource&lt;Boolean&gt;
+}
+</pre>
+
+<h2>Data Layer</h2>
+
+<h4>DTO &rarr; Domain mapping (extension functions):</h4>
+<pre>
+<span class="keyword">fun</span> UserDto.<span class="type">toDomain</span>() = User(id, name, username, email, phone, website)
+<span class="keyword">fun</span> UserEntity.<span class="type">toDomain</span>() = User(id, name, username, email, phone, website)
+<span class="keyword">fun</span> PostEntity.<span class="type">toDomain</span>(isFavorite: Boolean) = Post(id, userId, title, body, isFavorite)
+</pre>
+
+<h4>Repository - Offline-first pattern:</h4>
+<pre>
+<span class="keyword">override fun</span> getPostsByUser(userId: Long): Flow&lt;List&lt;Post&gt;&gt; {
+    <span class="keyword">val</span> postsFlow = queries.getPostsByUserId(userId).asFlow().mapToList(dispatcher.io)
+    <span class="keyword">val</span> favoritesFlow = queries.getAllFavorites().asFlow().mapToList(dispatcher.io)
+
+    <span class="keyword">return</span> postsFlow.<span class="type">combine</span>(favoritesFlow) { posts, favorites ->
+        <span class="keyword">val</span> favoriteIds = favorites.map { it.postId }.toSet()
+        posts.map { entity -> entity.toDomain(isFavorite = entity.id <span class="keyword">in</span> favoriteIds) }
+    }
+}
+</pre>
+
+<h2>Presentation Layer</h2>
+
+<h4>ScreenModel pattern:</h4>
+<pre>
+<span class="keyword">class</span> <span class="type">UserListScreenModel</span>(
+    <span class="keyword">private val</span> getUsersUseCase: GetUsersUseCase,
+    <span class="keyword">private val</span> refreshUsersUseCase: RefreshUsersUseCase
+) : ScreenModel {
+
+    <span class="keyword">private val</span> _state = MutableStateFlow&lt;UiState&lt;List&lt;User&gt;&gt;&gt;(UiState.Loading)
+    <span class="keyword">val</span> state: StateFlow = _state.<span class="type">asStateFlow</span>()
+
+    <span class="keyword">fun</span> refreshUsers() {
+        screenModelScope.launch {
+            refreshUsersUseCase().<span class="type">onFailure</span> { error ->
+                <span class="keyword">if</span> (_state.value !<span class="keyword">is</span> UiState.Success) {
+                    _state.value = UiState.Error(error.message)
+                }
+            }
+        }
+    }
+}
+</pre>
+
+<!-- 7. SCREENS -->
+<div class="page-break"></div>
+<h1 id="screens">7. Screenlar</h1>
+
+<table>
+    <tr><th>#</th><th>Screen</th><th>Vazifasi</th><th>Xususiyatlar</th></tr>
+    <tr><td>1</td><td><strong>Splash</strong></td><td>Dastlabki yuklash</td><td>DB tekshirish, API yuklash, Retry</td></tr>
+    <tr><td>2</td><td><strong>User List</strong></td><td>Foydalanuvchilar ro'yxati</td><td>LazyColumn, Pull-to-refresh, Favorites tugma</td></tr>
+    <tr><td>3</td><td><strong>Post List</strong></td><td>User postlari</td><td>LazyColumn, Pull-to-refresh, Favorite toggle (real-time)</td></tr>
+    <tr><td>4</td><td><strong>Post Detail</strong></td><td>Post tafsiloti</td><td>Post body, Commentlar ro'yxati</td></tr>
+    <tr><td>5</td><td><strong>Favorites</strong></td><td>Sevimli postlar</td><td>Faqat local DB, Offline ishlaydi</td></tr>
+</table>
+
+<h3>Navigation Flow</h3>
+<pre>
+Splash &rarr; User List &rarr; Post List &rarr; Post Detail
+                  &darr;
+              Favorites &rarr; Post Detail
+</pre>
+
+<h3>Reusable Widgetlar</h3>
+<table>
+    <tr><th>Widget</th><th>Ishlatilgan joylar</th><th>Parametrlar</th></tr>
+    <tr><td><code>UiStateScaffold</code></td><td>UserList, PostDetail, Favorites</td><td>state, topBar, onRetry, content</td></tr>
+    <tr><td><code>PostCard</code></td><td>PostList, Favorites</td><td>post, onClick, onFavoriteClick, showBody</td></tr>
+    <tr><td><code>AppTopBar</code></td><td>Barcha screenlar</td><td>title, onBackClick?, actions</td></tr>
+    <tr><td><code>LoadingContent</code></td><td>Barcha screenlar</td><td>modifier</td></tr>
+    <tr><td><code>ErrorContent</code></td><td>Barcha screenlar</td><td>message, onRetry, modifier</td></tr>
+</table>
+
+<!-- 8. DATABASE -->
+<div class="page-break"></div>
+<h1 id="db">8. Database</h1>
+
+<h3>SQLDelight - 3 ta jadval</h3>
+
+<table>
+    <tr><th>Jadval</th><th>Primary Key</th><th>Fieldlar</th><th>Foreign Key</th></tr>
+    <tr><td><code>UserEntity</code></td><td>id</td><td>name, username, email, phone, website</td><td>-</td></tr>
+    <tr><td><code>PostEntity</code></td><td>id</td><td>userId, title, body</td><td>userId &rarr; UserEntity.id</td></tr>
+    <tr><td><code>FavoritePostEntity</code></td><td>postId</td><td>userId, title, body</td><td>userId &rarr; UserEntity.id</td></tr>
+</table>
+
+<h3>Query'lar</h3>
+<table>
+    <tr><th>Query</th><th>SQL</th></tr>
+    <tr><td><code>getAllUsers</code></td><td>SELECT * FROM UserEntity</td></tr>
+    <tr><td><code>insertUser</code></td><td>INSERT OR REPLACE INTO UserEntity(...)</td></tr>
+    <tr><td><code>getPostsByUserId</code></td><td>SELECT * FROM PostEntity WHERE userId = ?</td></tr>
+    <tr><td><code>isFavorite</code></td><td>SELECT COUNT(*) FROM FavoritePostEntity WHERE postId = ?</td></tr>
+    <tr><td><code>insertFavorite</code></td><td>INSERT OR REPLACE INTO FavoritePostEntity(...)</td></tr>
+    <tr><td><code>deleteFavorite</code></td><td>DELETE FROM FavoritePostEntity WHERE postId = ?</td></tr>
+</table>
+
+<!-- 9. STATE MANAGEMENT -->
+<h1 id="state">9. State Management</h1>
+
+<h3>2 ta sealed type:</h3>
+
+<table>
+    <tr><th>Type</th><th>Qatlam</th><th>Vazifasi</th><th>Holatlari</th></tr>
+    <tr><td><code>Resource&lt;T&gt;</code></td><td>Data / Domain</td><td>Operatsiya natijasi</td><td>Success(data), Failure(error)</td></tr>
+    <tr><td><code>UiState&lt;T&gt;</code></td><td>Presentation</td><td>UI holati</td><td>Loading, Success(data), Error(message)</td></tr>
+</table>
+
+<div class="box box-blue">
+    <strong>Nima uchun ikkalasi ham kerak?</strong><br>
+    <code>Resource</code> - business logic uchun (AppError bilan). <code>UiState</code> - UI uchun (Loading holati + String message). ScreenModel <code>Resource</code> ni <code>UiState</code> ga convert qiladi. Data layer UI haqida bilmaydi.
+</div>
+
+<!-- 10. ERROR HANDLING -->
+<h1 id="error">10. Error Handling</h1>
+
+<pre>
+API call &rarr; safeApiCall() &rarr; Resource.Success / Resource.Failure(AppError)
+                                         &darr;
+DB call  &rarr; safeDbCall()  &rarr; Resource.Success / Resource.Failure(AppError)
+                                         &darr;
+                              UseCase &rarr; Resource&lt;T&gt; qaytaradi
+                                         &darr;
+                              ScreenModel &rarr; .fold() / .onFailure()
+                                         &darr;
+                              UiState.Error(message) &rarr; ErrorContent widget
+</pre>
+
+<h4>AppError turlari:</h4>
+<table>
+    <tr><th>Error</th><th>Trigger</th><th>Default message</th></tr>
+    <tr><td><code>NetworkError</code></td><td>IOException</td><td>Internet bilan aloqa yo'q</td></tr>
+    <tr><td><code>ServerError</code></td><td>ServerResponseException / ClientRequestException</td><td>Server xatoligi (+ HTTP code)</td></tr>
+    <tr><td><code>DatabaseError</code></td><td>DB exception</td><td>Ma'lumotlar bazasi xatoligi</td></tr>
+    <tr><td><code>NotFoundError</code></td><td>Entity null</td><td>Ma'lumot topilmadi</td></tr>
+    <tr><td><code>UnknownError</code></td><td>Boshqa exception</td><td>Noma'lum xatolik</td></tr>
+</table>
+
+<!-- 11. DI -->
+<div class="page-break"></div>
+<h1 id="di">11. Dependency Injection</h1>
+
+<h3>Koin - 4 ta modul:</h3>
+<table>
+    <tr><th>Modul</th><th>Scope</th><th>Tarkibi</th></tr>
+    <tr><td><code>coreModule</code></td><td>single</td><td>DispatcherProvider, HttpClient, ApiService</td></tr>
+    <tr><td><code>repositoryModule</code></td><td>single</td><td>UserRepo, PostRepo, CommentRepo, FavoriteRepo (interface bind)</td></tr>
+    <tr><td><code>useCaseModule</code></td><td>factory</td><td>9 ta UseCase</td></tr>
+    <tr><td><code>screenModelModule</code></td><td>factory</td><td>5 ta ScreenModel</td></tr>
+    <tr><td><code>platformModule</code></td><td>single</td><td>DatabaseDriverFactory, UserFeedDatabase (expect/actual)</td></tr>
+</table>
+
+<div class="box">
+    <strong>single</strong> = 1 ta instance (singleton)<br>
+    <strong>factory</strong> = har safar yangi instance
+</div>
+
+<!-- 12. KMP -->
+<h1 id="kmp">12. KMP Platform-Specific kod</h1>
+
+<table>
+    <tr><th>Fayl</th><th>commonMain (expect)</th><th>Android (actual)</th><th>iOS (actual)</th></tr>
+    <tr><td>DatabaseDriverFactory</td><td><code>expect class</code></td><td>AndroidSqliteDriver</td><td>NativeSqliteDriver</td></tr>
+    <tr><td>PlatformModule</td><td><code>expect val</code></td><td>androidContext()</td><td>(oddiy)</td></tr>
+    <tr><td>Ktor Engine</td><td>(avtomatik)</td><td>ktor-client-okhttp</td><td>ktor-client-darwin</td></tr>
+</table>
+
+<!-- 13. OFFLINE -->
+<h1 id="offline">13. Offline Support</h1>
+
+<div class="box box-green">
+    <strong>Offline-first strategiya:</strong><br>
+    <code>getUsers()</code> va <code>getPostsByUser()</code> faqat DB dan Flow qaytaradi.<br>
+    <code>refresh()</code> API dan yuklab DB ga yozadi.<br>
+    Flow avtomatik yangilanadi. Internet yo'q bo'lsa oxirgi DB ma'lumot ko'rinadi.
+</div>
+
+<h4>Favorite real-time yangilanish:</h4>
+<p><code>combine(postsFlow, favoritesFlow)</code> - FavoritePostEntity o'zgarganda postsFlow ham qayta emit qiladi. Yulduzcha real-time o'zgaradi.</p>
+
+<!-- 14. THEME -->
+<h1 id="theme">14. Theming va Dark Mode</h1>
+
+<p><code>UserFeedTheme</code> - <code>isSystemInDarkTheme()</code> orqali avtomatik Light/Dark mode.</p>
+
+<h4>AppTextStyle / AppColor - Flutter pattern:</h4>
+<pre>
+<span class="comment">// Flutter:</span>  Text('Hello', style: context.textTheme.bodyLarge)
+<span class="comment">// Compose:</span> Text(<span class="string">"Hello"</span>, style = AppTextStyle.bodyLarge)
+
+<span class="comment">// Flutter:</span>  Theme.of(context).colorScheme.primary
+<span class="comment">// Compose:</span> AppColor.primary
+</pre>
+
+<!-- 15. RUN -->
+<h1 id="run">15. Ishga tushirish</h1>
+
+<h4>Talablar:</h4>
+<ul>
+    <li>JDK 17</li>
+    <li>Android Studio / Fleet</li>
+    <li>Xcode 16+ (iOS uchun)</li>
+</ul>
+
+<h4>Android:</h4>
+<pre>./gradlew :composeApp:assembleDebug</pre>
+
+<h4>iOS:</h4>
+<p>Xcode orqali <code>iosApp/iosApp.xcodeproj</code> ochib run qiling.</p>
+
+<div class="box box-red">
+    <strong>Eslatma:</strong> <code>gradle.properties</code> da JDK 17 path ko'rsatilgan.<br>
+    <code>org.gradle.java.home=/path/to/jdk17</code>
+</div>
+
+</body>
+</html>

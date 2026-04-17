@@ -32,11 +32,7 @@ class UserListScreenModel(
         screenModelScope.launch {
             getUsersUseCase()
                 .catch { e -> _state.value = UiState.Error(e.message ?: "Unknown error") }
-                .collect { users ->
-                    if (users.isNotEmpty()) {
-                        _state.value = UiState.Success(users)
-                    }
-                }
+                .collect { users -> _state.value = UiState.Success(users) }
         }
     }
 

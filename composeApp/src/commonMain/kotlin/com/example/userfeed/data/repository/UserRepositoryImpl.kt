@@ -5,7 +5,6 @@ import app.cash.sqldelight.coroutines.mapToList
 import com.example.userfeed.core.utils.DispatcherProvider
 import com.example.userfeed.core.utils.Resource
 import com.example.userfeed.core.utils.safeApiCall
-import com.example.userfeed.core.utils.safeDbCall
 import com.example.userfeed.data.mapper.toDomain
 import com.example.userfeed.data.remote.ApiService
 import com.example.userfeed.db.UserFeedDatabase
@@ -43,10 +42,5 @@ class UserRepositoryImpl(
                     )
                 }
             }
-        }
-
-    override suspend fun hasUsers(): Resource<Boolean> =
-        safeDbCall(dispatcher.io) {
-            queries.getUserCount().executeAsOne() > 0
         }
 }

@@ -3,6 +3,7 @@ package com.example.userfeed.data.mapper
 import com.example.userfeed.data.remote.dto.CommentDto
 import com.example.userfeed.data.remote.dto.PostDto
 import com.example.userfeed.data.remote.dto.UserDto
+import com.example.userfeed.db.CommentEntity
 import com.example.userfeed.db.FavoritePostEntity
 import com.example.userfeed.db.PostEntity
 import com.example.userfeed.db.UserEntity
@@ -50,6 +51,14 @@ fun PostEntity.toDomain(isFavorite: Boolean = false) = Post(
     title = title,
     body = body,
     isFavorite = isFavorite
+)
+
+fun CommentEntity.toDomain() = Comment(
+    id = id,
+    postId = postId,
+    name = name,
+    email = email,
+    body = body
 )
 
 fun FavoritePostEntity.toDomain() = Post(

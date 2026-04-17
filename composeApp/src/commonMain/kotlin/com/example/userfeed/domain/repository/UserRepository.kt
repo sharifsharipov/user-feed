@@ -7,5 +7,4 @@ import kotlinx.coroutines.flow.Flow
 interface UserRepository {
     fun getUsers(): Flow<List<User>>
     suspend fun refreshUsers(): Resource<Unit>
-    suspend fun hasUsers(): Resource<Boolean>
 }

@@ -38,11 +38,7 @@ class PostListScreenModel(
         screenModelScope.launch {
             getPostsByUserUseCase(userId)
                 .catch { e -> _state.value = UiState.Error(e.message ?: "Unknown error") }
-                .collect { posts ->
-                    if (posts.isNotEmpty()) {
-                        _state.value = UiState.Success(posts)
-                    }
-                }
+                .collect { posts -> _state.value = UiState.Success(posts) }
         }
     }
 

@@ -2,7 +2,6 @@ package com.example.userfeed.presentation.screens.splash
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.example.userfeed.domain.usecase.HasUsersUseCase
 import com.example.userfeed.domain.usecase.RefreshUsersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +15,6 @@ sealed interface SplashState {
 }
 
 class SplashScreenModel(
-    private val hasUsersUseCase: HasUsersUseCase,
     private val refreshUsersUseCase: RefreshUsersUseCase
 ) : ScreenModel {
 
@@ -30,13 +28,6 @@ class SplashScreenModel(
     private fun loadInitialData() {
         screenModelScope.launch {
             _state.value = SplashState.Loading
-
-            val hasUsers = hasUsersUseCase().getOrNull() ?: false
-            if (hasUsers) {
-                _state.value = SplashState.NavigateToUsers
-                return@launch
-            }
-
             refreshUsersUseCase().fold(
                 onSuccess = { _state.value = SplashState.NavigateToUsers },
                 onFailure = { error -> _state.value = SplashState.Error(error.message) }

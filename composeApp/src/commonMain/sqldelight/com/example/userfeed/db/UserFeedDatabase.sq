@@ -23,6 +23,15 @@ CREATE TABLE IF NOT EXISTS FavoritePostEntity (
     FOREIGN KEY (userId) REFERENCES UserEntity(id)
 );
 
+CREATE TABLE IF NOT EXISTS CommentEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    postId INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    body TEXT NOT NULL,
+    FOREIGN KEY (postId) REFERENCES PostEntity(id)
+);
+
 getAllUsers:
 SELECT * FROM UserEntity;
 
@@ -64,3 +73,16 @@ SELECT COUNT(*) FROM FavoritePostEntity WHERE postId = ?;
 
 getFavoritesByUserId:
 SELECT * FROM FavoritePostEntity WHERE userId = ?;
+
+getCommentsByPostId:
+SELECT * FROM CommentEntity WHERE postId = ?;
+
+insertComment:
+INSERT OR REPLACE INTO CommentEntity(id, postId, name, email, body)
+VALUES (?, ?, ?, ?, ?);
+
+deleteCommentsByPostId:
+DELETE FROM CommentEntity WHERE postId = ?;
+
+getCommentCount:
+SELECT COUNT(*) FROM CommentEntity WHERE postId = ?;
